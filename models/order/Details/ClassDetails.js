@@ -2,24 +2,24 @@ const {Cdate} = require('../../../shared/classes/Date')
 const {Chour} = require('../../../shared/classes/Hour')
 
 
-
 class CDetails{
     constructor(){
         this.details = {
-            "city"         : String,
-            "street"       : String,
-            "number"       : String,
+            "isConcrete"  : Boolean,
+            "isPump"      : Boolean,  
+            "city"        :String,
+            "street"      :String,
+            "number"       :String,
             "date"         : new Cdate(),
             "hour"         : new Chour(),
-            "casting"      : String,
-            "amount"       : Number,
-            "isConcrete"   : Boolean, 
+            "castingType"  : String,
             "concreteType" : String,
-            "isPump"       : Boolean,     
-            "pumpType"     : String,
-            "isHose"       : Boolean,
-            "hoseType"     : String
+            "amount"       : Number,
+            "pumpType"      : String,
+            "isDailyHose"    : Boolean,
+            "rubberHose"     : Number
         }
-    }   
+    }  
 }
+
 module.exports = {CDetails}

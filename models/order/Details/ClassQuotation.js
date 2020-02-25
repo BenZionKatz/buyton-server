@@ -2,7 +2,8 @@
     constructor(){
         this.quot = {
             "componyName" : String,
-            "prise"       : Number
+            "price"       : Number,
+            "rderId"      : Number
         }
         this.error = false;
     }

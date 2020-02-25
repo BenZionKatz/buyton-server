@@ -9,10 +9,17 @@ getConcrete = async ()=>{
 }
 
 getPump = async() =>{
-   let query   = 'SELECT TeurParit FROM dbo.atblPritimMishava';
+   let query   = 'SELECT TeurParit FROM dbo.AtblPritimMasheva';
    let pumpTypes = await db.query(query);
    return pumpTypes;
 }
+
+getCasting = async ()=>{
+   let query = 'SELECT TeurParit FROM dbo.AtblSugYetzika';
+   let castiingTypes = await db.query(query);
+   return castiingTypes
+}
+
 
 module.exports =  async()=> {
    let orderDropDowns = new OrderDropDowns();
@@ -20,13 +27,23 @@ module.exports =  async()=> {
    db = await DB.getConnection();
    try{
       let concretes = await getConcrete();
-      //let pumps     = await getPump();
       concretes.recordset.map(concrete =>{
          orderDropDowns.dropDowns.concretes.push(concrete.TeurParit);
       })
-      //pumps.recordset.map(pump =>{
-      //   orderDropDowns.dropDowns.pumps.push(pump.TeurParit);
-    //  })
+      console.log(concretes);
+      
+      let pumps = await getPump();
+      pumps.recordset.map(pump =>{
+         orderDropDowns.dropDowns.pumps.push(pump.TeurParit);
+      })
+      console.log(pumps);
+
+      let castings = await getCasting();
+      castings.recordset.map(casting =>{
+         orderDropDowns.dropDowns.castings.push(casting.TeurParit);
+      })
+      console.log(castings);
+
       return orderDropDowns;
    } 
    catch(e) {
